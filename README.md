@@ -33,3 +33,14 @@ Este projeto é uma calculadora simples criada com **HTML**, **CSS** e **JavaScr
     ```bash
     git clone https://github.com/Fagner-Lopes-Paiva/calculadora.git
     ```
+
+## Como utilizar como extenção do chrome
+
+1. Clone o repósitorio, ou se você não esta familiarizado com o github baixe o zip do arquivo.
+2. abra o repositorio, vá em code e faça o Download ZIP
+3. Abra o chrome e na barra de pesquisa digite: chrome://extensions/
+4. no cando superior dereito ative o modo desemvolvedor.
+5. Click em carregar sem compactação.
+6. Selecione a pasta da calculadora.
+
+E pronto esta pronto sua extenção personalizada da minha calaculadore em noen. Parabéns!
