@@ -37,8 +37,22 @@ function clearDisplay() {
 function calculate() {
   let result;
   const prev = parseFloat(previousInput);
-  const current = parseFloat(currentInput);
-  if (isNaN(prev) || isNaN(current)) return;
+  let current = parseFloat(currentInput);
+
+  if (isNaN(current)) return;
+
+  // ✅ Aplica a porcentagem corretamente de acordo com o operador
+  if (currentInput.includes('%')) {
+    current = parseFloat(currentInput.replace('%', ''));
+    if (operator === '+' || operator === '-') {
+      current = (prev * current) / 100;
+    } else if (operator === '*' || operator === '/') {
+      current = current / 100;
+    }
+  }
+
+  if (isNaN(prev)) return;
+
   switch (operator) {
     case '+':
       result = prev + current;
@@ -55,6 +69,7 @@ function calculate() {
     default:
       return;
   }
+
   currentInput = result.toString();
   operator = null;
   previousInput = '';
@@ -66,7 +81,6 @@ function backspace() {
   updateDisplay();
 }
 
-// ✅ Event binding após o DOM carregar
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('[data-number]').forEach(button =>
     button.addEventListener('click', () => appendNumber(button.dataset.number))
@@ -81,4 +95,12 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelector('[data-equals]').addEventListener('click', calculate);
   document.querySelector('[data-clear]').addEventListener('click', clearDisplay);
   document.querySelector('[data-backspace]').addEventListener('click', backspace);
+
+  // ✅ botão de porcentagem (insere o símbolo % no currentInput)
+  document.querySelector('[data-percent]')?.addEventListener('click', () => {
+    if (!currentInput.includes('%')) {
+      currentInput += '%';
+      updateDisplay();
+    }
+  });
 });
