@@ -1,0 +1,13 @@
+{
+    "manifest_version": 3,
+    "name": "Calculadora Web",
+    "description": "Uma calculadora simples feita com HTML, CSS e JavaScript.",
+    "version": "1.0",
+    "action": {
+        "default_popup": "index.html",
+        "default_icon": "icon.png"
+    },
+    "icons": {
+        "48": "icon.png"
+    }
+}
